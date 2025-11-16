@@ -362,6 +362,27 @@
             color: #667eea;
         }
 
+        .navigation {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background: #5568d3;
+            text-decoration: none;
+        }
+
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
             body {
@@ -605,12 +626,124 @@
                 font-size: 1.1em;
             }
         }
+
+        /* Footer Styles */
+        .footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 15px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.82em;
+            line-height: 1.5;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            color: #fff;
+            font-size: 1em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .footer p {
+            margin-bottom: 6px;
+            color: #bdc3c7;
+        }
+
+        .footer .disclaimer-text {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 6px;
+            margin: 12px 0;
+            border-left: 3px solid #667eea;
+            text-align: center;
+        }
+
+        .footer .sources {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer .sources strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer a:hover {
+            color: #5568d3;
+            text-decoration: underline;
+        }
+
+        .footer .copyright {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9em;
+            color: #95a5a6;
+        }
+
+        .footer .copyright p {
+            margin-bottom: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                padding: 18px 15px;
+                margin-top: 25px;
+                font-size: 0.8em;
+            }
+
+            .footer h3 {
+                font-size: 0.98em;
+                margin-bottom: 8px;
+            }
+
+            .footer .disclaimer-text {
+                padding: 10px;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer {
+                padding: 15px 12px;
+                margin-top: 20px;
+                font-size: 0.78em;
+            }
+
+            .footer h3 {
+                font-size: 0.95em;
+            }
+
+            .footer .disclaimer-text {
+                padding: 8px;
+                margin: 8px 0;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>إعراب القرآن</h1>
         <div class="subtitle">Quran E'arab Learning</div>
+
+        <div class="navigation">
+            <a href="sarf.html" class="nav-link">صرف القرآن (Morphology) →</a>
+        </div>
 
         <div class="info">
             <p>Select a Surah and enter an Ayah number to get the grammatical analysis (E'arab)</p>
@@ -674,6 +807,26 @@
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>تنويه - Disclaimer</h3>
+            <p style="font-weight: 600; color: #fff; margin-bottom: 8px;">هذا التطبيق تعليمي ويستخدم خدمات ومواقع خارجية</p>
+            <p style="margin-bottom: 10px;">Educational application using third-party services. Content belongs to original sources.</p>
+
+            <div class="sources">
+                <strong>Sources:</strong>
+                <p>
+                    <a href="https://surahquran.com" target="_blank" rel="noopener">surahquran.com</a> •
+                    <a href="https://quranapi.pages.dev" target="_blank" rel="noopener">quranapi.pages.dev</a>
+                </p>
+            </div>
+
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة للمصادر الأصلية - All rights reserved to original sources</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         let surahs = [];

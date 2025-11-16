@@ -1,18 +1,101 @@
 # Quran E'arab Learning Application
 
-A single-page web application for learning Arabic grammatical analysis (E'arab/إعراب) of Quranic verses with integrated translations.
+A web application for learning Arabic grammatical analysis (E'arab/إعراب) of Quranic verses with integrated translations and morphological analysis (Sarf/صرف).
+
+## Disclaimer
+
+**IMPORTANT: Please read this disclaimer carefully before using this application.**
+
+This application is an educational tool created for learning purposes only. Users should be aware of the following:
+
+### Third-Party Services
+- This application uses **third-party APIs and websites** that are **NOT owned, controlled, or maintained** by this project
+- The content is fetched from:
+  - **quranapi.pages.dev** - for Surah lists and translations
+  - **surahquran.com** - for E'arab (grammatical analysis) content
+  - **aratools.com** - for morphological analysis (Sarf)
+- These services are independent and may change, become unavailable, or modify their content at any time
+
+### Content Ownership
+- **All Quranic content, translations, and E'arab analysis belong to their respective original sources**
+- This application does not claim ownership of any fetched content
+- Content is displayed in its original form from the source websites
+- All copyrights and intellectual property rights remain with the original content providers
+
+### Service Availability
+- The application depends on external services and CORS proxy servers
+- **Service availability is NOT guaranteed** and may be affected by:
+  - API or website downtime
+  - CORS proxy service interruptions
+  - Network connectivity issues
+  - Changes to source website structure
+- If content fails to load, users can access the original sources directly via provided links
+
+### CORS Proxy Usage
+- This application uses public CORS proxy services to fetch content:
+  - api.allorigins.win
+  - corsproxy.io
+  - thingproxy.freeboard.io
+  - api.codetabs.com
+- **These are third-party services** with their own terms and usage policies
+- The availability and reliability of these proxies are beyond our control
+- Users should be aware that content passes through these intermediate servers
+
+### Educational Purpose
+- This application is intended **solely for educational purposes** to facilitate learning Arabic grammar through Quranic verses
+- It is designed to supplement traditional learning methods, not replace them
+- Users are encouraged to verify content with authentic Islamic scholarly sources
+
+### No Warranty
+- This application is provided "AS IS" without any warranties, express or implied
+- The developers make no guarantees about:
+  - Accuracy of fetched content
+  - Availability or uptime of the service
+  - Compatibility with all browsers or devices
+  - Freedom from errors or interruptions
+
+### Respect for Source Terms
+- Users are expected to respect the terms of service of all source websites and APIs
+- Commercial use of content should comply with the original sources' licensing terms
+- This tool should not be used to circumvent any access restrictions or terms of service of source websites
+
+### Privacy
+- This application runs entirely in the user's browser (client-side)
+- No user data is collected, stored, or transmitted by this application
+- However, requests to third-party APIs and proxy services are subject to their respective privacy policies
+
+### Recommendation
+For the most authentic and reliable content, users are encouraged to visit the source websites directly:
+- [surahquran.com](https://surahquran.com) - for E'arab analysis
+- [quranapi.pages.dev](https://quranapi.pages.dev) - for Quran data and translations
+- [aratools.com](https://aratools.com) - for morphological analysis
+
+**By using this application, you acknowledge that you have read and understood this disclaimer.**
+
+---
 
 ## Features
 
+### E'arab Analysis (index.html)
 - **Surah Selection**: Dropdown menu with all 114 Surahs (Arabic and English names)
 - **Ayah Input**: Smart validation preventing invalid ayah numbers
 - **E'arab Display**: Grammatical analysis fetched and displayed from surahquran.com
 - **Translations**: English and Urdu translations for selected verses
 - **Navigation**: Previous/Next buttons for seamless ayah browsing
+
+### Morphology Analysis (sarf.html)
+- **Arabic Word Input**: Enter any Arabic word for morphological analysis
+- **Comprehensive Analysis**: Displays vocalized form, meaning, part of speech, root, and measure
+- **Multiple Forms**: Shows all possible morphological interpretations
+- **Table Display**: Clean tabular format for easy comparison
+- **Real-time API**: Fetches data from aratools.com API
+
+### Common Features
 - **Responsive Design**: Mobile-friendly layout with optimized spacing
 - **RTL Support**: Proper right-to-left rendering for Arabic and Urdu text
 - **Loading States**: Visual feedback with spinners during content fetching
-- **Error Handling**: Graceful error messages in Arabic
+- **Error Handling**: Graceful error messages in Arabic and English
+- **Cross-page Navigation**: Easy navigation between E'arab and Sarf tools
 
 ## APIs Used
 
@@ -69,6 +152,41 @@ A single-page web application for learning Arabic grammatical analysis (E'arab/�
 **Example**: `https://surahquran.com/quran-search/e3rab-aya-4-sora-3.html`
 
 **Access Method**: Fetched via CORS proxies (see Technical Architecture)
+
+### 4. Morphology API (Sarf)
+**Endpoint**: `https://aratools.com/api/v1/dictionary/lookup/ar/{word}?filter_diacritics=true&_={timestamp}`
+
+**Purpose**: Fetches morphological analysis for Arabic words
+
+**Example**: `https://aratools.com/api/v1/dictionary/lookup/ar/رددنا?filter_diacritics=true&_=1763286324737`
+
+**Response Structure**:
+```json
+{
+  "words": [
+    {
+      "form": "رددنا",
+      "voc_form": "رَدَدْنا",
+      "gloss": "answer;reply;return we <verb>",
+      "nice_gloss": "we answer;reply;return",
+      "pos": "radad/VERB_PERFECT+nA/PVSUFF_SUBJ:1P",
+      "pos_abbr": "VERB_PERFECT_PVSUFF_SUBJ:1P",
+      "pos_nice": "Perfect tense verb, suffixed subject (1. person, plural)",
+      "lemma": "rad~-u_1",
+      "root": "رد",
+      "measure": "I",
+      "tags": [...]
+    }
+  ]
+}
+```
+
+**Usage**: Displays morphological breakdown in tabular format showing:
+- Form: Vocalized Arabic form
+- Gloss: English translation
+- POS: Part of speech description
+- Root: Arabic root letters
+- Measure: Verb form (I-X)
 
 ## Technical Architecture
 
@@ -139,19 +257,40 @@ function navigateAyah(direction) {
 
 ## How to Use
 
+### E'arab Analysis (index.html)
+
 1. **Select a Surah**: Choose from the dropdown menu (shows Arabic and English names)
 2. **Enter Ayah Number**: Type the ayah number (validated against total ayahs)
 3. **Click "عرض الإعراب"**: Displays E'arab content and translations
 4. **Navigate**: Use Previous/Next buttons to browse sequential ayahs
 5. **View Source**: Click "عرض الصفحة الأصلية" to open original page
+6. **Switch to Sarf**: Click the "صرف القرآن (Morphology) →" button to analyze word morphology
+
+### Morphology Analysis (sarf.html)
+
+1. **Enter Arabic Word**: Type any Arabic word (e.g., رددنا)
+2. **Click "تحليل الصرف"**: Analyzes and displays morphological breakdown
+3. **View Results**: Table shows form, gloss, POS, root, and measure for all possible interpretations
+4. **Switch to E'arab**: Click "← إعراب القرآن (E'arab)" to return to verse analysis
 
 ## Project Structure
 
-### Single File Application
-The entire application is contained in `index.html` with:
-- HTML structure
-- Embedded CSS styles
-- JavaScript functionality
+### Application Files
+The application consists of two standalone HTML files:
+
+**`index.html`** - E'arab Analysis Page
+- Surah and Ayah selection interface
+- E'arab content display
+- Translation display (English and Urdu)
+- Navigation between ayahs
+- Embedded CSS and JavaScript
+- No external dependencies
+
+**`sarf.html`** - Morphology Analysis Page
+- Arabic word input interface
+- Morphological analysis display
+- Table-based result presentation
+- Embedded CSS and JavaScript
 - No external dependencies
 
 ### Key Components
@@ -316,6 +455,7 @@ Potential features for future development:
 **Data Sources**:
 - Surah and Translation API: [quranapi.pages.dev](https://quranapi.pages.dev)
 - E'arab Content: [surahquran.com](https://surahquran.com)
+- Morphology API: [aratools.com](https://aratools.com)
 
 **CORS Proxies**:
 - api.allorigins.win
@@ -329,4 +469,4 @@ This project is open source and available for educational purposes.
 
 ---
 
-**Note**: This application requires an active internet connection to fetch Surah data, E'arab content, and translations from external APIs.
+**Note**: This application requires an active internet connection to fetch Surah data, E'arab content, morphological analysis, and translations from external APIs.
