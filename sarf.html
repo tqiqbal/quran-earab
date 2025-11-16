@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f5f5;
+            background: #F0FDF4;
             min-height: 100vh;
             padding: 20px 8px;
             margin: 0;
@@ -54,7 +54,7 @@
         .nav-link {
             display: inline-block;
             padding: 8px 16px;
-            background: #667eea;
+            background: #10B981;
             color: white;
             text-decoration: none;
             border-radius: 6px;
@@ -63,7 +63,7 @@
         }
 
         .nav-link:hover {
-            background: #5568d3;
+            background: #059669;
         }
 
         .info {
@@ -72,7 +72,7 @@
             border-radius: 8px;
             margin-bottom: 20px;
             color: #495057;
-            border-left: 3px solid #667eea;
+            border-left: 3px solid #10B981;
             font-size: 0.93em;
             line-height: 1.6;
         }
@@ -103,15 +103,15 @@
 
         input[type="text"]:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #10B981;
             background: white;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.08);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.08);
         }
 
         button {
             width: 100%;
             padding: 15px;
-            background: #667eea;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -122,8 +122,8 @@
         }
 
         button:hover {
-            background: #5568d3;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+            background: linear-gradient(135deg, #34D399 0%, #10B981 100%);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
         }
 
         button:active {
@@ -142,7 +142,7 @@
 
         .spinner {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
+            border-top: 4px solid #10B981;
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -187,7 +187,7 @@
         }
 
         .result-table thead {
-            background: #667eea;
+            background: linear-gradient(135deg, #10B981 0%, #14B8A6 100%);
             color: white;
         }
 
@@ -278,13 +278,13 @@
         }
 
         .footer a {
-            color: #667eea;
+            color: #34D399;
             text-decoration: none;
             transition: color 0.2s ease;
         }
 
         .footer a:hover {
-            color: #5568d3;
+            color: #10B981;
             text-decoration: underline;
         }
 
@@ -405,7 +405,7 @@
 
         <div class="loading-spinner" id="loadingSpinner">
             <div class="spinner"></div>
-            <p style="margin-top: 15px; color: #667eea;">جاري تحليل الكلمة...</p>
+            <p style="margin-top: 15px; color: #10B981;">جاري تحليل الكلمة...</p>
         </div>
 
         <div class="result" id="result"></div>
@@ -539,7 +539,7 @@
                         <p style="font-weight: 600; margin-bottom: 8px;">عذراً، حدث خطأ أثناء تحليل الكلمة</p>
                         <p style="font-size: 0.9em;">Sorry, an error occurred while analyzing the word</p>
                         <p style="font-size: 0.85em; margin-top: 8px; color: #999;">${error.message}</p>
-                        <p style="font-size: 0.85em; margin-top: 5px; color: #999;">Try accessing <a href="https://aratools.com" target="_blank" style="color: #667eea;">aratools.com</a> directly</p>
+                        <p style="font-size: 0.85em; margin-top: 5px; color: #999;">Try accessing <a href="https://aratools.com" target="_blank" style="color: #10B981;">aratools.com</a> directly</p>
                     </div>
                 `;
                 result.classList.add('show');
