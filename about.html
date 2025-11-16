@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Quran E'arab & Sarf</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #F0FDF4;
+            min-height: 100vh;
+            padding: 20px 8px 80px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 35px 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #10B981;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .section p {
+            color: #495057;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        .sources-list {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .sources-list h3 {
+            color: #10B981;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .sources-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sources-list li {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .sources-list a {
+            color: #10B981;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .sources-list a:hover {
+            color: #059669;
+            text-decoration: underline;
+        }
+
+        .disclaimer-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #f39c12;
+            margin-top: 15px;
+        }
+
+        .disclaimer-box p {
+            color: #856404;
+            font-weight: 500;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-top: 1px solid #e1e4e8;
+        }
+
+        .bottom-nav-content {
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        .bottom-nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 0.75em;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .bottom-nav-item.active {
+            color: #10B981;
+        }
+
+        .bottom-nav-icon {
+            font-size: 1.5em;
+            margin-bottom: 2px;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #10B981;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+            margin-top: 20px;
+        }
+
+        .nav-link:hover {
+            background: #059669;
+        }
+
+        .back-links {
+            text-align: center;
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 8px 80px;
+            }
+
+            .container {
+                padding: 25px 20px;
+                border-radius: 10px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .subtitle {
+                font-size: 0.88em;
+            }
+
+            .section {
+                padding: 20px 16px;
+                margin-bottom: 20px;
+            }
+
+            .section h2 {
+                font-size: 1.25em;
+            }
+
+            .section p {
+                font-size: 0.9em;
+            }
+
+            .back-links {
+                display: none;
+            }
+
+            .bottom-nav {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 16px 4px 80px;
+            }
+
+            .container {
+                padding: 20px 16px;
+                border-radius: 8px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .section {
+                padding: 16px 14px;
+            }
+
+            .section h2 {
+                font-size: 1.15em;
+            }
+
+            .section p {
+                font-size: 0.88em;
+            }
+
+            .sources-list {
+                padding: 16px;
+            }
+
+            .disclaimer-box {
+                padding: 16px;
+            }
+
+            .bottom-nav-content {
+                padding: 6px 0 4px;
+            }
+
+            .bottom-nav-item {
+                padding: 6px 4px;
+                font-size: 0.7em;
+            }
+
+            .bottom-nav-icon {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About</h1>
+        <div class="subtitle">Quran E'arab & Sarf Learning Tool</div>
+
+        <div class="section">
+            <h2>تنويه - Disclaimer</h2>
+            <div class="disclaimer-box">
+                <p style="font-weight: 600; margin-bottom: 8px;">هذا التطبيق تعليمي ويستخدم خدمات ومواقع خارجية</p>
+                <p>Educational application using third-party services. Content belongs to original sources.</p>
+            </div>
+            <p style="margin-top: 15px;">
+                This is an educational web application designed to help students learn Arabic grammar through Quranic text analysis.
+                All content is fetched from third-party sources and we do not claim ownership of any religious texts or grammatical analyses.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Data Sources</h2>
+            <p>This application fetches data from the following trusted sources:</p>
+
+            <div class="sources-list">
+                <h3>E'arab (Grammatical Analysis)</h3>
+                <ul>
+                    <li>
+                        <strong>Surah Quran</strong> - <a href="https://surahquran.com" target="_blank" rel="noopener">surahquran.com</a>
+                        <br><span style="font-size: 0.9em; color: #666;">Provides detailed Arabic grammatical analysis (E'arab) for Quranic verses</span>
+                    </li>
+                    <li>
+                        <strong>Quran API</strong> - <a href="https://quranapi.pages.dev" target="_blank" rel="noopener">quranapi.pages.dev</a>
+                        <br><span style="font-size: 0.9em; color: #666;">Supplies English and Urdu translations of Quranic verses</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sources-list" style="margin-top: 15px;">
+                <h3>Sarf (Morphology Analysis)</h3>
+                <ul>
+                    <li>
+                        <strong>AraTools</strong> - <a href="https://aratools.com" target="_blank" rel="noopener">aratools.com</a>
+                        <br><span style="font-size: 0.9em; color: #666;">Provides Arabic morphological analysis including root, form, and grammatical details</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Features</h2>
+            <p><strong>📖 E'arab Analysis:</strong> Detailed grammatical breakdown of Quranic verses with English and Urdu translations</p>
+            <p><strong>🔤 Sarf Analysis:</strong> Morphological analysis of Arabic words including root derivation and grammatical forms</p>
+            <p><strong>📱 Mobile Responsive:</strong> Optimized for both desktop and mobile viewing</p>
+            <p><strong>🌐 No Backend Required:</strong> Pure client-side application with zero data collection</p>
+        </div>
+
+        <div class="section">
+            <h2>Privacy & Data</h2>
+            <p>
+                This application runs entirely in your browser and does not collect, store, or transmit any personal data.
+                All requests are made directly to third-party APIs from your device. Please refer to the privacy policies
+                of the source websites for information about how they handle requests.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Copyright & Attribution</h2>
+            <p style="font-weight: 600;">جميع الحقوق محفوظة للمصادر الأصلية</p>
+            <p>All rights reserved to original sources. This application serves as an educational interface
+            and does not claim ownership of any content provided by the third-party sources mentioned above.</p>
+        </div>
+
+        <div class="back-links">
+            <a href="index.html" class="nav-link">← Back to E'arab</a>
+            <a href="sarf.html" class="nav-link">← Back to Sarf</a>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-content">
+            <a href="index.html" class="bottom-nav-item">
+                <div class="bottom-nav-icon">📖</div>
+                <div>E'arab</div>
+            </a>
+            <a href="sarf.html" class="bottom-nav-item">
+                <div class="bottom-nav-icon">🔤</div>
+                <div>Sarf</div>
+            </a>
+            <a href="about.html" class="bottom-nav-item active">
+                <div class="bottom-nav-icon">ℹ️</div>
+                <div>About</div>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

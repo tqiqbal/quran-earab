@@ -383,109 +383,253 @@
             text-decoration: none;
         }
 
+        /* Bottom Navigation (Mobile App Style) */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-top: 1px solid #e1e4e8;
+        }
+
+        .bottom-nav-content {
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        .bottom-nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 0.75em;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .bottom-nav-item.active {
+            color: #10B981;
+        }
+
+        .bottom-nav-icon {
+            font-size: 1.5em;
+            margin-bottom: 2px;
+        }
+
+        /* Sticky Header */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 999;
+            padding: 12px 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .sticky-header.show {
+            display: block;
+        }
+
+        .sticky-header h2 {
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            z-index: 998;
+            transition: all 0.3s ease;
+        }
+
+        .fab:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
             body {
-                padding: 15px 6px;
+                padding: 0;
+                padding-top: 24px;
+                padding-bottom: 70px;
             }
 
             .container {
-                padding: 28px 22px;
-                border-radius: 10px;
+                padding: 28px 16px 30px;
+                border-radius: 0;
+                box-shadow: none;
+                margin-top: 0;
             }
 
             h1 {
-                font-size: 1.75em;
-                margin-bottom: 5px;
+                font-size: 1.6em;
+                margin-bottom: 8px;
             }
 
             .subtitle {
-                font-size: 0.88em;
-                margin-bottom: 20px;
+                font-size: 0.85em;
+                margin-bottom: 16px;
+                color: #95a5a6;
+            }
+
+            .navigation {
+                display: none;
+            }
+
+            .bottom-nav {
+                display: block;
             }
 
             .form-group {
-                margin-bottom: 16px;
+                margin-bottom: 20px;
             }
 
             label {
-                font-size: 0.92em;
-                margin-bottom: 7px;
+                font-size: 0.9em;
+                margin-bottom: 8px;
+                font-weight: 600;
             }
 
             select, input {
-                padding: 12px 14px;
+                padding: 14px 16px;
                 font-size: 16px;
+                border-radius: 12px;
+                border: 2px solid #e1e4e8;
+                transition: all 0.2s ease;
+            }
+
+            select:focus, input:focus {
+                border-color: #10B981;
+                box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
             }
 
             select {
-                padding-left: 32px;
-                background-position: left 12px center;
+                padding-left: 38px;
+                background-position: left 14px center;
+                background-size: 14px;
             }
 
-            button {
-                padding: 14px;
-                font-size: 1.02em;
+            button[type="submit"] {
+                padding: 16px;
+                font-size: 1.05em;
+                border-radius: 12px;
+                font-weight: 700;
+                margin-top: 8px;
             }
 
             .info {
-                padding: 12px 14px;
-                font-size: 0.9em;
-                margin-bottom: 18px;
+                padding: 14px 16px;
+                font-size: 0.88em;
+                margin-bottom: 20px;
+                border-radius: 12px;
+                background: linear-gradient(135deg, #f8f9fa 0%, #f0f1f2 100%);
+                border-left: 4px solid #10B981;
             }
 
             .arabic {
-                font-size: 1.15em;
+                font-size: 1.1em;
             }
 
             .result {
-                margin-top: 18px;
+                margin-top: 20px;
             }
 
             .result-link {
-                padding: 9px 18px;
-                font-size: 0.84em;
+                padding: 10px 20px;
+                font-size: 0.85em;
+                border-radius: 8px;
             }
 
             .earab-content {
-                padding: 18px;
+                padding: 20px 16px;
+                border-radius: 12px;
+                margin-top: 20px;
             }
 
             .earab-content h2 {
-                font-size: 1.25em;
-                margin-bottom: 16px;
+                font-size: 1.2em;
+                margin-bottom: 18px;
             }
 
             .earab-content .card {
-                padding: 18px 16px;
-                font-size: 0.95em;
+                padding: 18px;
+                margin-bottom: 16px;
+                border-radius: 12px;
+                border-left: 4px solid #10B981;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             }
 
             .earab-content .card-body {
-                font-size: 1.02em;
-                line-height: 1.85;
+                font-size: 1em;
+                line-height: 1.9;
             }
 
             .translation-section {
-                padding: 18px;
-                margin-top: 18px;
+                padding: 20px 16px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                border-radius: 12px;
             }
 
             .translation-item {
-                padding: 14px;
-                margin-bottom: 14px;
+                padding: 16px;
+                margin-bottom: 16px;
+                border-radius: 10px;
+                border-left: 4px solid #14B8A6;
+            }
+
+            .translation-label {
+                font-size: 0.8em;
+                margin-bottom: 10px;
             }
 
             .translation-text {
                 font-size: 1em;
+                line-height: 1.85;
             }
 
             .translation-text.urdu {
-                font-size: 1.1em;
+                font-size: 1.15em;
+            }
+
+            .surah-info {
+                margin-bottom: 20px;
+                padding-bottom: 16px;
             }
 
             .surah-info h3 {
                 font-size: 1.15em;
+                margin-bottom: 6px;
             }
 
             .surah-info p {
@@ -493,105 +637,134 @@
             }
 
             .navigation-buttons {
-                gap: 10px;
-                padding: 0 15px;
+                gap: 12px;
+                padding: 0;
+                margin-top: 20px;
+                position: sticky;
+                bottom: 70px;
+                background: white;
+                padding: 12px 16px;
+                margin-left: -16px;
+                margin-right: -16px;
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+                z-index: 10;
             }
 
             .nav-btn {
                 font-size: 0.95em;
-                padding: 11px 16px;
+                padding: 14px 18px;
+                border-radius: 10px;
+                min-height: 48px;
+            }
+
+            .loading-spinner {
+                padding: 40px 20px;
+            }
+
+            .spinner {
+                width: 50px;
+                height: 50px;
+                border-width: 5px;
             }
         }
 
         @media (max-width: 480px) {
             body {
-                padding: 12px 4px;
+                padding-top: 12px;
             }
 
             .container {
-                padding: 24px 18px;
-                border-radius: 8px;
+                padding: 20px 12px 24px;
             }
 
             h1 {
-                font-size: 1.6em;
-            }
-
-            .subtitle {
-                font-size: 0.85em;
-                margin-bottom: 18px;
-            }
-
-            .form-group {
-                margin-bottom: 15px;
-            }
-
-            label {
-                font-size: 0.9em;
+                font-size: 1.5em;
                 margin-bottom: 6px;
             }
 
+            .subtitle {
+                font-size: 0.82em;
+                margin-bottom: 14px;
+            }
+
+            .form-group {
+                margin-bottom: 18px;
+            }
+
+            label {
+                font-size: 0.88em;
+                margin-bottom: 7px;
+            }
+
             select, input {
-                padding: 11px 13px;
-                font-size: 15px;
+                padding: 13px 14px;
+                font-size: 16px;
+                border-radius: 10px;
             }
 
             select {
-                padding-left: 30px;
-                background-position: left 10px center;
+                padding-left: 36px;
+                background-position: left 12px center;
             }
 
-            button {
-                padding: 13px;
-                font-size: 0.98em;
+            button[type="submit"] {
+                padding: 15px;
+                font-size: 1em;
+                border-radius: 10px;
             }
 
             .info {
-                padding: 11px 13px;
-                font-size: 0.86em;
-                margin-bottom: 16px;
+                padding: 12px 14px;
+                font-size: 0.85em;
+                margin-bottom: 18px;
+                border-radius: 10px;
             }
 
             .arabic {
-                font-size: 1.1em;
+                font-size: 1.05em;
             }
 
             .result-link {
-                padding: 8px 16px;
+                padding: 9px 18px;
                 font-size: 0.82em;
             }
 
             .earab-content {
-                padding: 16px 14px;
+                padding: 16px 12px;
+                border-radius: 10px;
             }
 
             .earab-content h2 {
-                font-size: 1.15em;
-                margin-bottom: 14px;
+                font-size: 1.1em;
+                margin-bottom: 16px;
             }
 
             .earab-content .card {
-                padding: 16px 14px;
-                font-size: 0.92em;
+                padding: 16px;
+                margin-bottom: 14px;
+                border-radius: 10px;
             }
 
             .earab-content .card-body {
-                font-size: 0.98em;
-                line-height: 1.8;
+                font-size: 0.95em;
+                line-height: 1.85;
             }
 
             .translation-section {
-                padding: 16px 14px;
+                padding: 16px 12px;
                 margin-top: 16px;
+                border-radius: 10px;
             }
 
             .translation-item {
-                padding: 12px;
-                margin-bottom: 12px;
+                padding: 14px;
+                margin-bottom: 14px;
+                border-radius: 8px;
             }
 
             .translation-label {
-                font-size: 0.85em;
+                font-size: 0.78em;
+                margin-bottom: 8px;
             }
 
             .translation-text {
@@ -599,11 +772,11 @@
             }
 
             .translation-text.urdu {
-                font-size: 1.05em;
+                font-size: 1.08em;
             }
 
             .surah-info h3 {
-                font-size: 1.05em;
+                font-size: 1.08em;
             }
 
             .surah-info p {
@@ -611,19 +784,34 @@
             }
 
             .navigation-buttons {
-                gap: 8px;
-                padding: 0 10px;
-                margin-top: 16px;
+                gap: 10px;
+                padding: 10px 12px;
+                margin-left: -12px;
+                margin-right: -12px;
             }
 
             .nav-btn {
                 font-size: 0.9em;
-                padding: 10px 14px;
+                padding: 12px 16px;
                 gap: 6px;
+                min-height: 44px;
             }
 
             .nav-arrow {
                 font-size: 1.1em;
+            }
+
+            .bottom-nav-content {
+                padding: 6px 0 4px;
+            }
+
+            .bottom-nav-item {
+                padding: 6px 4px;
+                font-size: 0.7em;
+            }
+
+            .bottom-nav-icon {
+                font-size: 1.4em;
             }
         }
 
@@ -631,11 +819,11 @@
         .footer {
             background: #2c3e50;
             color: #ecf0f1;
-            padding: 20px 15px;
+            padding: 16px 15px;
             margin-top: 30px;
             text-align: center;
-            font-size: 0.82em;
-            line-height: 1.5;
+            font-size: 0.8em;
+            line-height: 1.4;
         }
 
         .footer-content {
@@ -702,36 +890,91 @@
 
         @media (max-width: 768px) {
             .footer {
-                padding: 18px 15px;
-                margin-top: 25px;
-                font-size: 0.8em;
+                padding: 6px 12px;
+                padding-bottom: 72px;
+                margin-top: 20px;
+                font-size: 0.65em;
+                line-height: 1.2;
             }
 
             .footer h3 {
-                font-size: 0.98em;
-                margin-bottom: 8px;
+                display: none;
+            }
+
+            .footer p {
+                display: none;
+            }
+
+            .footer .sources {
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+
+            .footer .sources strong {
+                display: none;
+            }
+
+            .footer .sources p {
+                display: block;
+                margin: 0;
+            }
+
+            .footer .copyright {
+                display: none;
             }
 
             .footer .disclaimer-text {
-                padding: 10px;
-                margin: 10px 0;
+                display: none;
             }
         }
 
         @media (max-width: 480px) {
+            body {
+                padding-top: 20px;
+            }
+
+            .container {
+                padding: 24px 12px 24px;
+            }
+
             .footer {
-                padding: 15px 12px;
-                margin-top: 20px;
-                font-size: 0.78em;
+                padding: 5px 10px;
+                padding-bottom: 70px;
+                margin-top: 16px;
+                font-size: 0.6em;
+                line-height: 1.2;
             }
 
             .footer h3 {
-                font-size: 0.95em;
+                display: none;
+            }
+
+            .footer p {
+                display: none;
+            }
+
+            .footer .sources {
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+
+            .footer .sources strong {
+                display: none;
+            }
+
+            .footer .sources p {
+                display: block;
+                margin: 0;
+            }
+
+            .footer .copyright {
+                display: none;
             }
 
             .footer .disclaimer-text {
-                padding: 8px;
-                margin: 8px 0;
+                display: none;
             }
         }
     </style>
@@ -808,25 +1051,23 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <h3>تنويه - Disclaimer</h3>
-            <p style="font-weight: 600; color: #fff; margin-bottom: 8px;">هذا التطبيق تعليمي ويستخدم خدمات ومواقع خارجية</p>
-            <p style="margin-bottom: 10px;">Educational application using third-party services. Content belongs to original sources.</p>
-
-            <div class="sources">
-                <strong>Sources:</strong>
-                <p>
-                    <a href="https://surahquran.com" target="_blank" rel="noopener">surahquran.com</a> •
-                    <a href="https://quranapi.pages.dev" target="_blank" rel="noopener">quranapi.pages.dev</a>
-                </p>
-            </div>
-
-            <div class="copyright">
-                <p>جميع الحقوق محفوظة للمصادر الأصلية - All rights reserved to original sources</p>
-            </div>
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-content">
+            <a href="index.html" class="bottom-nav-item active">
+                <div class="bottom-nav-icon">📖</div>
+                <div>E'arab</div>
+            </a>
+            <a href="sarf.html" class="bottom-nav-item">
+                <div class="bottom-nav-icon">🔤</div>
+                <div>Sarf</div>
+            </a>
+            <a href="about.html" class="bottom-nav-item">
+                <div class="bottom-nav-icon">ℹ️</div>
+                <div>About</div>
+            </a>
         </div>
-    </footer>
+    </nav>
 
     <script>
         let surahs = [];
