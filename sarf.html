@@ -289,10 +289,11 @@
                     <table class="result-table">
                         <thead>
                             <tr>
-                                <th>Word</th>
-                                <th>Root</th>
-                                <th>POS</th>
+                                <th>Form</th>
                                 <th>Gloss</th>
+                                <th>POS</th>
+                                <th>Root</th>
+                                <th>Measure</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -302,18 +303,20 @@
             let cardsHtml = '<div class="mobile-cards">';
 
             words.forEach(word => {
-                const arabicWord = word.vocalized || word.arabic;
+                const arabicWord = word.voc_form || word.form;
                 const root = word.root || '-';
-                const pos = word.pos || '-';
-                const gloss = word.gloss || '-';
+                const pos = word.pos_nice || word.pos_abbr || '-';
+                const gloss = word.nice_gloss || word.gloss || '-';
+                const measure = word.measure || '-';
 
                 // Table Row
                 tableHtml += `
                     <tr>
                         <td class="arabic-text" style="font-size: 1.2em; font-weight: bold;">${arabicWord}</td>
-                        <td class="arabic-text">${root}</td>
-                        <td>${pos}</td>
                         <td>${gloss}</td>
+                        <td>${pos}</td>
+                        <td class="arabic-text">${root}</td>
+                        <td>${measure}</td>
                     </tr>
                 `;
 
@@ -321,20 +324,24 @@
                 cardsHtml += `
                     <div class="card result-card">
                         <div class="result-card-row">
-                            <span class="result-card-label">Word</span>
+                            <span class="result-card-label">Form</span>
                             <span class="result-card-value arabic-text" style="font-size: 1.2em; font-weight: bold;">${arabicWord}</span>
                         </div>
                         <div class="result-card-row">
-                            <span class="result-card-label">Root</span>
-                            <span class="result-card-value arabic-text">${root}</span>
+                            <span class="result-card-label">Gloss</span>
+                            <span class="result-card-value">${gloss}</span>
                         </div>
                         <div class="result-card-row">
                             <span class="result-card-label">POS</span>
                             <span class="result-card-value">${pos}</span>
                         </div>
                         <div class="result-card-row">
-                            <span class="result-card-label">Gloss</span>
-                            <span class="result-card-value">${gloss}</span>
+                            <span class="result-card-label">Root</span>
+                            <span class="result-card-value arabic-text">${root}</span>
+                        </div>
+                        <div class="result-card-row">
+                            <span class="result-card-label">Measure</span>
+                            <span class="result-card-value">${measure}</span>
                         </div>
                     </div>
                 `;
