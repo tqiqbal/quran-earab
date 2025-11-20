@@ -66,9 +66,9 @@ body {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px 12px 80px 12px;
+    /* Increased top, reduced sides */
     flex: 1;
-    padding-bottom: 80px;
     /* Space for bottom nav on mobile */
 }
 
