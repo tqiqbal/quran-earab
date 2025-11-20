@@ -1,181 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>صرف - Arabic Morphology Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #F0FDF4;
-            min-height: 100vh;
-            padding: 20px 8px;
-            margin: 0;
-        }
-
-        .container {
-            background: white;
-            border-radius: 12px;
-            padding: 35px 30px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 5px;
-            font-size: 2em;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #7f8c8d;
-            margin-bottom: 25px;
-            font-size: 0.95em;
-            font-weight: 400;
-        }
-
-        .navigation {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .nav-link {
-            display: inline-block;
-            padding: 8px 16px;
-            background: #10B981;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 0.9em;
-            transition: all 0.2s ease;
-        }
-
-        .nav-link:hover {
-            background: #059669;
-        }
-
-        .info {
-            background: #f8f9fa;
-            padding: 14px 16px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            color: #495057;
-            border-left: 3px solid #10B981;
-            font-size: 0.93em;
-            line-height: 1.6;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #2c3e50;
-            font-weight: 600;
-            font-size: 0.95em;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 13px 15px;
-            border: 1px solid #dcdde1;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.2s ease;
-            background: #fafafa;
-            text-align: right;
-            direction: rtl;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #10B981;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.08);
-        }
-
-        button {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.05em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        button:hover {
-            background: linear-gradient(135deg, #34D399 0%, #10B981 100%);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
-        }
-
-        button:active {
-            transform: scale(0.98);
-        }
-
-        .loading-spinner {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .loading-spinner.show {
-            display: block;
-        }
-
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #10B981;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .result {
-            margin-top: 20px;
-            display: none;
-        }
-
-        .result.show {
-            display: block;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .result-table {
             width: 100%;
             border-collapse: collapse;
@@ -213,145 +47,9 @@
             border-bottom: none;
         }
 
-        .arabic-text {
-            font-size: 1.15em;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .error-message {
-            background: #fee;
-            border: 1px solid #fcc;
-            color: #c33;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 30px;
-            color: #7f8c8d;
-            font-size: 1.1em;
-        }
-
-        /* Footer Styles */
-        .footer {
-            background: #2c3e50;
-            color: #ecf0f1;
-            padding: 16px 15px;
-            margin-top: 30px;
-            text-align: center;
-            font-size: 0.8em;
-            line-height: 1.4;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer h3 {
-            color: #fff;
-            font-size: 1em;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .footer p {
-            margin-bottom: 6px;
-            color: #bdc3c7;
-        }
-
-        .footer .sources {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer .sources strong {
-            color: #fff;
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.95em;
-        }
-
-        .footer a {
-            color: #34D399;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .footer a:hover {
-            color: #10B981;
-            text-decoration: underline;
-        }
-
-        .footer .copyright {
-            margin-top: 12px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9em;
-            color: #95a5a6;
-        }
-
-        .footer .copyright p {
-            margin-bottom: 3px;
-        }
-
-        /* Bottom Navigation (Mobile App Style) */
-        .bottom-nav {
+        /* Mobile Card Style for Results */
+        .mobile-cards {
             display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            border-top: 1px solid #e1e4e8;
-        }
-
-        .bottom-nav-content {
-            display: flex;
-            justify-content: space-around;
-            padding: 8px 0;
-            max-width: 768px;
-            margin: 0 auto;
-        }
-
-        .bottom-nav-item {
-            flex: 1;
-            text-align: center;
-            padding: 8px;
-            color: #7f8c8d;
-            text-decoration: none;
-            font-size: 0.75em;
-            transition: all 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .bottom-nav-item.active {
-            color: #10B981;
-        }
-
-        .bottom-nav-icon {
-            font-size: 1.5em;
-            margin-bottom: 2px;
-        }
-
-        /* Card Result Style for Mobile */
-        .result-card {
-            background: white;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border-left: 4px solid #10B981;
         }
 
         .result-card-row {
@@ -386,99 +84,7 @@
             flex-grow: 1;
         }
 
-        .result-card-value.arabic {
-            font-size: 1.1em;
-            font-weight: 600;
-        }
-
-        .mobile-cards {
-            display: none;
-        }
-
-        /* Mobile Responsive Styles */
         @media (max-width: 768px) {
-            body {
-                padding: 0;
-                padding-top: 24px;
-                padding-bottom: 70px;
-            }
-
-            .container {
-                padding: 28px 16px 30px;
-                border-radius: 0;
-                box-shadow: none;
-                margin-top: 0;
-            }
-
-            h1 {
-                font-size: 1.6em;
-                margin-bottom: 8px;
-            }
-
-            .subtitle {
-                font-size: 0.85em;
-                margin-bottom: 16px;
-                color: #95a5a6;
-            }
-
-            .navigation {
-                display: none;
-            }
-
-            .bottom-nav {
-                display: block;
-            }
-
-            .form-group {
-                margin-bottom: 20px;
-            }
-
-            label {
-                font-size: 0.9em;
-                margin-bottom: 8px;
-                font-weight: 600;
-            }
-
-            input[type="text"] {
-                padding: 14px 16px;
-                font-size: 18px;
-                border-radius: 12px;
-                border: 2px solid #e1e4e8;
-                transition: all 0.2s ease;
-            }
-
-            input[type="text"]:focus {
-                border-color: #10B981;
-                box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
-            }
-
-            button[type="submit"] {
-                padding: 16px;
-                font-size: 1.05em;
-                border-radius: 12px;
-                font-weight: 700;
-                margin-top: 8px;
-            }
-
-            .info {
-                padding: 14px 16px;
-                font-size: 0.88em;
-                margin-bottom: 20px;
-                border-radius: 12px;
-                background: linear-gradient(135deg, #f8f9fa 0%, #f0f1f2 100%);
-                border-left: 4px solid #10B981;
-            }
-
-            .result {
-                margin-top: 24px;
-            }
-
-            .result h2 {
-                font-size: 1.15em;
-                margin-bottom: 20px;
-            }
-
-            /* Hide table on mobile, show cards instead */
             .result-table {
                 display: none;
             }
@@ -486,233 +92,81 @@
             .mobile-cards {
                 display: block;
             }
-
-            .loading-spinner {
-                padding: 40px 20px;
-            }
-
-            .spinner {
-                width: 50px;
-                height: 50px;
-                border-width: 5px;
-            }
-
-            .footer {
-                padding: 6px 12px;
-                padding-bottom: 72px;
-                margin-top: 20px;
-                font-size: 0.65em;
-                line-height: 1.2;
-            }
-
-            .footer h3 {
-                display: none;
-            }
-
-            .footer p {
-                display: none;
-            }
-
-            .footer .sources {
-                margin: 0;
-                padding: 0;
-                border: none;
-            }
-
-            .footer .sources strong {
-                display: none;
-            }
-
-            .footer .sources p {
-                display: block;
-                margin: 0;
-            }
-
-            .footer .copyright {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding-top: 20px;
-            }
-
-            .container {
-                padding: 24px 12px 24px;
-            }
-
-            h1 {
-                font-size: 1.5em;
-                margin-bottom: 6px;
-            }
-
-            .subtitle {
-                font-size: 0.82em;
-                margin-bottom: 14px;
-            }
-
-            .form-group {
-                margin-bottom: 18px;
-            }
-
-            label {
-                font-size: 0.88em;
-                margin-bottom: 7px;
-            }
-
-            input[type="text"] {
-                padding: 13px 14px;
-                font-size: 17px;
-                border-radius: 10px;
-            }
-
-            button[type="submit"] {
-                padding: 15px;
-                font-size: 1em;
-                border-radius: 10px;
-            }
-
-            .info {
-                padding: 12px 14px;
-                font-size: 0.85em;
-                margin-bottom: 18px;
-                border-radius: 10px;
-            }
-
-            .result h2 {
-                font-size: 1.08em;
-            }
-
-            .result-card {
-                padding: 14px;
-                margin-bottom: 10px;
-                border-radius: 10px;
-            }
-
-            .result-card-label {
-                font-size: 0.75em;
-            }
-
-            .result-card-value {
-                font-size: 0.9em;
-            }
-
-            .result-card-value.arabic {
-                font-size: 1.05em;
-            }
-
-            .footer {
-                padding: 5px 10px;
-                padding-bottom: 70px;
-                margin-top: 16px;
-                font-size: 0.6em;
-                line-height: 1.2;
-            }
-
-            .footer h3 {
-                display: none;
-            }
-
-            .footer p {
-                display: none;
-            }
-
-            .footer .sources {
-                margin: 0;
-                padding: 0;
-                border: none;
-            }
-
-            .footer .sources strong {
-                display: none;
-            }
-
-            .footer .sources p {
-                display: block;
-                margin: 0;
-            }
-
-            .footer .copyright {
-                display: none;
-            }
-
-            .bottom-nav-content {
-                padding: 6px 0 4px;
-            }
-
-            .bottom-nav-item {
-                padding: 6px 4px;
-                font-size: 0.7em;
-            }
-
-            .bottom-nav-icon {
-                font-size: 1.4em;
-            }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>صرف القرآن</h1>
-        <div class="subtitle">Arabic Morphology Analyzer</div>
-
-        <div class="navigation">
-            <a href="index.html" class="nav-link">← إعراب القرآن (E'arab)</a>
-        </div>
-
-        <div class="info">
-            <p>Enter an Arabic word to analyze its morphology, root, and grammatical forms</p>
-        </div>
-
-        <form id="sarfForm">
-            <div class="form-group">
-                <label for="wordInput">
-                    <span class="arabic-text">أدخل الكلمة العربية</span>
-                    (Enter Arabic Word)
-                </label>
-                <input
-                    type="text"
-                    id="wordInput"
-                    placeholder="مثال: رددنا"
-                    required
-                >
+    <!-- Desktop Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span>Quran E'arab</span>
             </div>
-
-            <button type="submit">
-                تحليل الصرف
-            </button>
-        </form>
-
-        <div class="loading-spinner" id="loadingSpinner">
-            <div class="spinner"></div>
-            <p style="margin-top: 15px; color: #10B981;">جاري تحليل الكلمة...</p>
-        </div>
-
-        <div class="result" id="result"></div>
-    </div>
-
-    <!-- Bottom Navigation (Mobile) -->
-    <nav class="bottom-nav">
-        <div class="bottom-nav-content">
-            <a href="index.html" class="bottom-nav-item">
-                <div class="bottom-nav-icon">📖</div>
-                <div>E'arab</div>
-            </a>
-            <a href="sarf.html" class="bottom-nav-item active">
-                <div class="bottom-nav-icon">🔤</div>
-                <div>Sarf</div>
-            </a>
-            <a href="about.html" class="bottom-nav-item">
-                <div class="bottom-nav-icon">ℹ️</div>
-                <div>About</div>
-            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">E'arab</a>
+                <a href="sarf.html" class="nav-item active">Sarf</a>
+                <a href="about.html" class="nav-item">About</a>
+            </div>
         </div>
     </nav>
 
+    <div class="app-container">
+        <div class="card">
+            <h1>صرف القرآن</h1>
+            <div class="subtitle">Arabic Morphology Analyzer</div>
+
+            <div class="info"
+                style="background: var(--bg-input); padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 3px solid var(--primary);">
+                <p>Enter an Arabic word to analyze its morphology, root, and grammatical forms</p>
+            </div>
+
+            <form id="sarfForm">
+                <div class="form-group">
+                    <label for="wordInput">
+                        <span class="arabic-text">أدخل الكلمة العربية</span>
+                        (Enter Arabic Word)
+                    </label>
+                    <input type="text" id="wordInput" placeholder="مثال: رددنا" required
+                        style="text-align: right; direction: rtl;">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%">
+                    Analyze Word
+                </button>
+            </form>
+        </div>
+
+        <div id="loadingSpinner" class="loading-spinner hidden">
+            <div class="spinner"></div>
+            <p class="text-center mt-4" style="color: var(--primary);">Analyzing word...</p>
+        </div>
+
+        <div id="result" class="result hidden fade-in">
+            <!-- Results will be injected here -->
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="bottom-nav-item">
+            <span class="bottom-nav-icon">📖</span>
+            <span>E'arab</span>
+        </a>
+        <a href="sarf.html" class="bottom-nav-item active">
+            <span class="bottom-nav-icon">🔤</span>
+            <span>Sarf</span>
+        </a>
+        <a href="about.html" class="bottom-nav-item">
+            <span class="bottom-nav-icon">ℹ️</span>
+            <span>About</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
     <script>
         // Handle form submission
-        document.getElementById('sarfForm').addEventListener('submit', async function(e) {
+        document.getElementById('sarfForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const wordInput = document.getElementById('wordInput');
@@ -733,8 +187,9 @@
 
             try {
                 // Show loading
-                loadingSpinner.classList.add('show');
-                result.classList.remove('show');
+                loadingSpinner.classList.remove('hidden');
+                result.classList.add('hidden');
+                result.innerHTML = ''; // Clear previous results
 
                 // Generate timestamp for cache busting
                 const timestamp = new Date().getTime();
@@ -755,9 +210,8 @@
                 // Try each proxy until one works
                 for (const proxyUrl of proxies) {
                     try {
-                        // Add timeout to prevent hanging
                         const controller = new AbortController();
-                        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+                        const timeoutId = setTimeout(() => controller.abort(), 10000);
 
                         const response = await fetch(proxyUrl, {
                             signal: controller.signal
@@ -773,7 +227,6 @@
                         const contentType = response.headers.get('content-type');
                         if (contentType && contentType.includes('application/json')) {
                             const jsonData = await response.json();
-                            // Check if it's allorigins response format
                             if (jsonData.contents) {
                                 data = JSON.parse(jsonData.contents);
                             } else {
@@ -784,7 +237,6 @@
                             data = JSON.parse(text);
                         }
 
-                        // If we got valid data, break the loop
                         if (data && data.words) {
                             console.log('Successfully fetched from:', proxyUrl);
                             break;
@@ -796,131 +248,104 @@
                     }
                 }
 
-                // If none of the proxies worked, throw error
                 if (!data || !data.words) {
-                    throw lastError || new Error('All proxies failed');
+                    throw lastError || new Error('Failed to fetch data');
                 }
 
-                // Hide loading
-                loadingSpinner.classList.remove('show');
-
-                // Display results
-                displayResults(data.words, word);
+                displayResults(data.words);
+                result.classList.remove('hidden');
 
             } catch (error) {
-                console.error('Error fetching Sarf analysis:', error);
-
-                // Hide loading
-                loadingSpinner.classList.remove('show');
-
-                // Show error message
+                console.error('Error:', error);
                 result.innerHTML = `
-                    <div class="error-message">
-                        <p style="font-weight: 600; margin-bottom: 8px;">عذراً، حدث خطأ أثناء تحليل الكلمة</p>
-                        <p style="font-size: 0.9em;">Sorry, an error occurred while analyzing the word</p>
-                        <p style="font-size: 0.85em; margin-top: 8px; color: #999;">${error.message}</p>
-                        <p style="font-size: 0.85em; margin-top: 5px; color: #999;">Try accessing <a href="https://aratools.com" target="_blank" style="color: #10B981;">aratools.com</a> directly</p>
+                    <div class="card" style="background: #fee; border-color: #fcc;">
+                        <p style="color: #c33; text-align: center;">
+                            Failed to analyze word. Please try again later.
+                            <br><small>${error.message}</small>
+                        </p>
                     </div>
                 `;
-                result.classList.add('show');
+                result.classList.remove('hidden');
+            } finally {
+                loadingSpinner.classList.add('hidden');
             }
         }
 
-        // Function to display results
-        function displayResults(words, searchWord) {
-            const result = document.getElementById('result');
+        function displayResults(words) {
+            const resultDiv = document.getElementById('result');
 
-            if (!words || words.length === 0) {
-                result.innerHTML = `
-                    <div class="no-results">
-                        <p style="font-weight: 600; margin-bottom: 8px;">لم يتم العثور على نتائج</p>
-                        <p>No results found for "${searchWord}"</p>
+            if (words.length === 0) {
+                resultDiv.innerHTML = `
+                    <div class="card">
+                        <p class="text-center" style="color: var(--text-muted);">No results found for this word.</p>
                     </div>
                 `;
-                result.classList.add('show');
                 return;
             }
 
-            // Build table HTML
-            let tableHTML = `
-                <h2 style="text-align: center; color: #2c3e50; margin-bottom: 15px;">
-                    نتائج التحليل الصرفي لـ: <span class="arabic-text">${searchWord}</span>
-                </h2>
-                <table class="result-table">
-                    <thead>
-                        <tr>
-                            <th>Form</th>
-                            <th>Gloss</th>
-                            <th>POS</th>
-                            <th>Root</th>
-                            <th>Measure</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            // Create Table for Desktop
+            let tableHtml = `
+                <div class="result-table-container">
+                    <table class="result-table">
+                        <thead>
+                            <tr>
+                                <th>Word</th>
+                                <th>Root</th>
+                                <th>POS</th>
+                                <th>Gloss</th>
+                            </tr>
+                        </thead>
+                        <tbody>
             `;
 
-            // Add each word result as a table row
+            // Create Cards for Mobile
+            let cardsHtml = '<div class="mobile-cards">';
+
             words.forEach(word => {
-                tableHTML += `
+                const arabicWord = word.vocalized || word.arabic;
+                const root = word.root || '-';
+                const pos = word.pos || '-';
+                const gloss = word.gloss || '-';
+
+                // Table Row
+                tableHtml += `
                     <tr>
-                        <td class="arabic-text">${word.voc_form || word.form}</td>
-                        <td>${word.nice_gloss || word.gloss}</td>
-                        <td>${word.pos_nice || word.pos_abbr}</td>
-                        <td class="arabic-text">${word.root || '-'}</td>
-                        <td>${word.measure || '-'}</td>
+                        <td class="arabic-text" style="font-size: 1.2em; font-weight: bold;">${arabicWord}</td>
+                        <td class="arabic-text">${root}</td>
+                        <td>${pos}</td>
+                        <td>${gloss}</td>
                     </tr>
                 `;
-            });
 
-            tableHTML += `
-                    </tbody>
-                </table>
-            `;
-
-            // Build mobile cards HTML
-            let cardsHTML = `
-                <h2 style="text-align: center; color: #2c3e50; margin-bottom: 20px;">
-                    نتائج التحليل الصرفي لـ: <span class="arabic-text">${searchWord}</span>
-                </h2>
-                <div class="mobile-cards">
-            `;
-
-            // Add each word result as a card
-            words.forEach((word, index) => {
-                cardsHTML += `
-                    <div class="result-card">
+                // Mobile Card
+                cardsHtml += `
+                    <div class="card result-card">
                         <div class="result-card-row">
-                            <div class="result-card-value arabic">${word.voc_form || word.form}</div>
-                            <div class="result-card-label">Form</div>
+                            <span class="result-card-label">Word</span>
+                            <span class="result-card-value arabic-text" style="font-size: 1.2em; font-weight: bold;">${arabicWord}</span>
                         </div>
                         <div class="result-card-row">
-                            <div class="result-card-value">${word.nice_gloss || word.gloss}</div>
-                            <div class="result-card-label">Gloss</div>
+                            <span class="result-card-label">Root</span>
+                            <span class="result-card-value arabic-text">${root}</span>
                         </div>
                         <div class="result-card-row">
-                            <div class="result-card-value">${word.pos_nice || word.pos_abbr}</div>
-                            <div class="result-card-label">POS</div>
+                            <span class="result-card-label">POS</span>
+                            <span class="result-card-value">${pos}</span>
                         </div>
                         <div class="result-card-row">
-                            <div class="result-card-value arabic">${word.root || '-'}</div>
-                            <div class="result-card-label">Root</div>
-                        </div>
-                        <div class="result-card-row">
-                            <div class="result-card-value">${word.measure || '-'}</div>
-                            <div class="result-card-label">Measure</div>
+                            <span class="result-card-label">Gloss</span>
+                            <span class="result-card-value">${gloss}</span>
                         </div>
                     </div>
                 `;
             });
 
-            cardsHTML += `</div>`;
+            tableHtml += '</tbody></table></div>';
+            cardsHtml += '</div>';
 
-            result.innerHTML = tableHTML + cardsHTML;
-            result.classList.add('show');
-
-            // Scroll to results
-            result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            resultDiv.innerHTML = tableHtml + cardsHtml;
         }
     </script>
 </body>
+
 </html>
