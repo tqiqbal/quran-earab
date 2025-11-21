@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quran E'arab Learning</title>
+    <title>Quran Tools - E'arab & Sarf</title>
     <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap"
@@ -16,7 +16,7 @@
     <nav class="top-nav">
         <div class="nav-container">
             <div class="nav-logo">
-                <span>Quran E'arab</span>
+                <span>Quran Tools</span>
             </div>
             <div class="nav-links">
                 <a href="index.html" class="nav-item active">E'arab</a>
@@ -146,10 +146,37 @@
             // Restore state if available
             const savedSurah = localStorage.getItem('lastSurah');
             const savedAyah = localStorage.getItem('lastAyah');
+            const savedAnalysis = localStorage.getItem('lastAnalysis');
 
             if (savedSurah) {
                 surahSelect.value = savedSurah;
                 if (savedAyah) ayahInput.value = savedAyah;
+            }
+
+            // Try to restore full analysis if it matches the saved state
+            if (savedAnalysis && savedSurah && savedAyah) {
+                try {
+                    const analysis = JSON.parse(savedAnalysis);
+                    if (analysis.surah == savedSurah && analysis.ayah == savedAyah) {
+                        displayContent(analysis.translation, analysis.earab, analysis.surah, analysis.ayah);
+                        updateNavButtons(analysis.surah, analysis.ayah);
+                        // Restore current state variables
+                        currentSurah = parseInt(savedSurah);
+                        currentAyah = parseInt(savedAyah);
+                        return; // Skip loading if restored from cache
+                    }
+                } catch (e) {
+                    console.warn('Failed to parse saved analysis', e);
+                    localStorage.removeItem('lastAnalysis');
+                }
+            }
+
+            // If we have saved surah/ayah but no valid cached analysis, we could auto-load
+            // But usually better to let user click or just leave inputs filled.
+            // For this request, "refreshing the page reset everything" implies they want the result back.
+            // If cache failed but we have inputs, let's re-fetch.
+            if (savedSurah && savedAyah) {
+                loadContent(parseInt(savedSurah), parseInt(savedAyah));
             }
         });
 
@@ -232,6 +259,20 @@
                 // 2. Fetch E'arab (SurahQuran.com via Proxy)
                 const earabUrl = `https://surahquran.com/quran-search/e3rab-aya-${ayahNum}-sora-${surahNum}.html`;
                 const earabHtml = await fetchWithProxy(earabUrl);
+
+                // Save full analysis to cache
+                const analysisData = {
+                    surah: surahNum,
+                    ayah: ayahNum,
+                    translation: translationData,
+                    earab: earabHtml,
+                    timestamp: new Date().getTime()
+                };
+                try {
+                    localStorage.setItem('lastAnalysis', JSON.stringify(analysisData));
+                } catch (e) {
+                    console.warn('Quota exceeded or error saving to localStorage', e);
+                }
 
                 // Update UI
                 displayContent(translationData, earabHtml, surahNum, ayahNum);
