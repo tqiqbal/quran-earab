@@ -5,18 +5,18 @@
 
 :root {
     /* Color Palette */
-    --primary: #047857;
+    --primary: #32de84;
     /* Emerald 700 */
-    --primary-hover: #059669;
+    --primary-hover: #26c673;
     /* Emerald 600 */
     --primary-light: #D1FAE5;
     /* Emerald 100 */
     --secondary: #D97706;
     /* Amber 600 */
-    --accent: #10B981;
+    --accent: #20B2AA;
     /* Emerald 500 */
 
-    --bg-body: #F0FDF4;
+    --bg-body: #fefefe;
     /* Emerald 50 */
     --bg-card: #FFFFFF;
     --bg-input: #FAFAFA;

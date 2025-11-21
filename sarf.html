@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صرف - Arabic Morphology Analyzer</title>
+    <title>Quran Tools - E'arab & Sarf</title>
     <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap"
@@ -180,6 +180,30 @@
             await analyzeSarf(word);
         });
 
+        // Initialize & Restore State
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedWord = localStorage.getItem('lastSarfWord');
+            const savedAnalysis = localStorage.getItem('lastSarfAnalysis');
+            const wordInput = document.getElementById('wordInput');
+
+            if (savedWord) {
+                wordInput.value = savedWord;
+            }
+
+            if (savedAnalysis && savedWord) {
+                try {
+                    const analysis = JSON.parse(savedAnalysis);
+                    if (analysis.word === savedWord) {
+                        displayResults(analysis.data);
+                        document.getElementById('result').classList.remove('hidden');
+                    }
+                } catch (e) {
+                    console.warn('Failed to restore Sarf analysis', e);
+                    localStorage.removeItem('lastSarfAnalysis');
+                }
+            }
+        });
+
         // Function to analyze Sarf
         async function analyzeSarf(word) {
             const loadingSpinner = document.getElementById('loadingSpinner');
@@ -250,6 +274,19 @@
 
                 if (!data || !data.words) {
                     throw lastError || new Error('Failed to fetch data');
+                }
+
+                // Save to cache
+                localStorage.setItem('lastSarfWord', word);
+                try {
+                    const cacheData = {
+                        word: word,
+                        data: data.words,
+                        timestamp: new Date().getTime()
+                    };
+                    localStorage.setItem('lastSarfAnalysis', JSON.stringify(cacheData));
+                } catch (e) {
+                    console.warn('Failed to save Sarf analysis to cache', e);
                 }
 
                 displayResults(data.words);
