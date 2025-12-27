@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quran Tools - E'arab & Sarf</title>
+    <title>Quran Grammar - E'arab & Sarf</title>
     <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap"
@@ -101,7 +101,7 @@
     <nav class="top-nav">
         <div class="nav-container">
             <div class="nav-logo">
-                <span>Quran E'arab</span>
+                <span>Quran Grammar</span>
             </div>
             <div class="nav-links">
                 <a href="index.html" class="nav-item">E'arab</a>
@@ -112,34 +112,27 @@
     </nav>
 
     <div class="app-container">
+        <section class="page-hero">
+            <h1>Morphology Analysis <span class="arabic-term">(صرف)</span></h1>
+            <p class="page-description">Analyze Arabic words to discover their root, form, and grammatical structure</p>
+        </section>
+
         <div class="card">
-            <h1>صرف القرآن</h1>
-            <div class="subtitle">Arabic Morphology Analyzer</div>
-
-            <div class="info"
-                style="background: var(--bg-input); padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 3px solid var(--primary);">
-                <p>Enter an Arabic word to analyze its morphology, root, and grammatical forms</p>
-            </div>
-
             <form id="sarfForm">
                 <div class="form-group">
-                    <label for="wordInput">
-                        <span class="arabic-text">أدخل الكلمة العربية</span>
-                        (Enter Arabic Word)
-                    </label>
-                    <input type="text" id="wordInput" placeholder="مثال: رددنا" required
-                        style="text-align: right; direction: rtl;">
+                    <label for="wordInput">Enter Arabic Word <span class="arabic-term">(كلمة عربية)</span></label>
+                    <input type="text" id="wordInput" class="arabic-text" placeholder="مثال: رددنا" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary" style="width: 100%">
-                    Analyze Word
+                    Analyze
                 </button>
             </form>
         </div>
 
-        <div id="loadingSpinner" class="loading-spinner hidden">
+        <div id="loadingSpinner" class="loading-container hidden">
             <div class="spinner"></div>
-            <p class="text-center mt-4" style="color: var(--primary);">Analyzing word...</p>
+            <p class="loading-text">Analyzing word...</p>
         </div>
 
         <div id="result" class="result hidden fade-in">
@@ -150,15 +143,21 @@
     <!-- Mobile Bottom Navigation -->
     <nav class="bottom-nav">
         <a href="index.html" class="bottom-nav-item">
-            <span class="bottom-nav-icon">📖</span>
+            <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
             <span>E'arab</span>
         </a>
         <a href="sarf.html" class="bottom-nav-item active">
-            <span class="bottom-nav-icon">🔤</span>
+            <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            </svg>
             <span>Sarf</span>
         </a>
         <a href="about.html" class="bottom-nav-item">
-            <span class="bottom-nav-icon">ℹ️</span>
+            <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
             <span>About</span>
         </a>
     </nav>

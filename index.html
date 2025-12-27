@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quran Tools - E'arab & Sarf</title>
+    <title>Quran Grammar - E'arab & Sarf</title>
     <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap"
@@ -16,7 +16,7 @@
     <nav class="top-nav">
         <div class="nav-container">
             <div class="nav-logo">
-                <span>Quran Tools</span>
+                <span>Quran Grammar</span>
             </div>
             <div class="nav-links">
                 <a href="index.html" class="nav-item active">E'arab</a>
@@ -27,35 +27,37 @@
     </nav>
 
     <div class="app-container">
-        <div class="card">
-            <h1>إعراب القرآن</h1>
-            <div class="subtitle">Quran Grammatical Analysis</div>
+        <section class="page-hero">
+            <h1>Grammatical Analysis <span class="arabic-term">(إعراب)</span></h1>
+            <p class="page-description">Explore the grammatical structure of Quranic verses with detailed E'arab analysis</p>
+        </section>
 
+        <div class="card">
             <form id="selectionForm">
                 <div class="form-group">
-                    <label for="surahSelect">Select Surah (سورة)</label>
+                    <label for="surahSelect">Select Surah <span class="arabic-term">(سورة)</span></label>
                     <select id="surahSelect" required>
                         <option value="">Loading Surahs...</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="ayahInput">Ayah Number (رقم الآية)</label>
-                    <input type="number" id="ayahInput" min="1" placeholder="Enter Ayah number" required>
+                    <label for="ayahInput">Ayah Number <span class="arabic-term">(آية)</span></label>
+                    <input type="number" id="ayahInput" min="1" placeholder="Enter ayah number" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary" style="width: 100%">
-                    Analyze Ayah
+                    Analyze
                 </button>
             </form>
         </div>
 
-        <div id="loadingSpinner" class="loading-spinner hidden">
+        <div id="loadingSpinner" class="loading-container hidden">
             <div class="spinner"></div>
-            <p class="text-center mt-4" style="color: var(--primary);">Fetching analysis...</p>
+            <p class="loading-text">Fetching analysis...</p>
         </div>
 
-        <div id="error" class="error-message hidden" style="color: red; text-align: center; margin-top: 10px;"></div>
+        <div id="error" class="hidden"></div>
 
         <div id="result" class="result hidden fade-in">
             <div class="surah-info text-center mb-4"
@@ -82,16 +84,12 @@
                     <h3>Translations</h3>
                 </div>
                 <div class="translation-box">
-                    <div class="translation-label">Arabic Text</div>
-                    <p id="arabicText" class="arabic-text" style="font-size: 1.5rem; margin-bottom: 0.5rem;"></p>
+                    <div class="translation-label">English</div>
+                    <p id="englishTranslation" class="translation-text"></p>
                 </div>
                 <div class="translation-box">
-                    <div class="translation-label">English Translation</div>
-                    <p id="englishTranslation"></p>
-                </div>
-                <div class="translation-box">
-                    <div class="translation-label">Urdu Translation</div>
-                    <p id="urduTranslation" class="arabic-text"></p>
+                    <div class="translation-label">Urdu <span class="arabic-term">(اردو)</span></div>
+                    <p id="urduTranslation" class="arabic-text translation-text"></p>
                 </div>
             </div>
         </div>
@@ -109,15 +107,21 @@
     <!-- Mobile Bottom Navigation -->
     <nav class="bottom-nav">
         <a href="index.html" class="bottom-nav-item active">
-            <span class="bottom-nav-icon">📖</span>
+            <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
             <span>E'arab</span>
         </a>
         <a href="sarf.html" class="bottom-nav-item">
-            <span class="bottom-nav-icon">🔤</span>
+            <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            </svg>
             <span>Sarf</span>
         </a>
         <a href="about.html" class="bottom-nav-item">
-            <span class="bottom-nav-icon">ℹ️</span>
+            <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
             <span>About</span>
         </a>
     </nav>
@@ -158,7 +162,7 @@
                 try {
                     const analysis = JSON.parse(savedAnalysis);
                     if (analysis.surah == savedSurah && analysis.ayah == savedAyah) {
-                        displayContent(analysis.translation, analysis.earab, analysis.surah, analysis.ayah);
+                        displayContent(analysis.translation, analysis.earab, analysis.surah, analysis.ayah, analysis.isLocalData);
                         updateNavButtons(analysis.surah, analysis.ayah);
                         // Restore current state variables
                         currentSurah = parseInt(savedSurah);
@@ -190,7 +194,7 @@
                 surahs.forEach((surah, index) => {
                     const option = document.createElement('option');
                     option.value = index + 1;
-                    option.textContent = `${index + 1}. ${surah.surahName} (${surah.surahNameTranslation})`;
+                    option.textContent = `${index + 1}. ${surah.surahNameTranslation} (${surah.surahNameArabic})`;
                     surahSelect.appendChild(option);
                 });
             } catch (error) {
@@ -231,7 +235,52 @@
             }
         });
 
-        // Load Content
+        // Load from Local JSON Data
+        async function loadFromLocalData(surahNum, ayahNum) {
+            const dataUrl = `data/surah-${surahNum}.json`;
+            const response = await fetch(dataUrl);
+
+            if (!response.ok) {
+                throw new Error(`Data file not available for Surah ${surahNum}`);
+            }
+
+            const surahData = await response.json();
+            const ayahData = surahData.ayahs.find(a => a.ayahNo === ayahNum);
+
+            if (!ayahData) {
+                throw new Error(`Ayah ${ayahNum} not found in Surah ${surahNum}`);
+            }
+
+            return {
+                translation: {
+                    arabic1: ayahData.arabic,
+                    english: ayahData.english,
+                    urdu: ayahData.urdu
+                },
+                earab: ayahData.earab,
+                isLocalData: true
+            };
+        }
+
+        // Load from Remote APIs (Fallback)
+        async function loadFromRemoteAPIs(surahNum, ayahNum) {
+            // 1. Fetch Translations (QuranAPI)
+            const translationUrl = `https://quranapi.pages.dev/api/${surahNum}/${ayahNum}.json`;
+            const translationRes = await fetch(translationUrl);
+            const translationData = await translationRes.json();
+
+            // 2. Fetch E'arab (SurahQuran.com via Proxy)
+            const earabUrl = `https://surahquran.com/quran-search/e3rab-aya-${ayahNum}-sora-${surahNum}.html`;
+            const earabHtml = await fetchWithProxy(earabUrl);
+
+            return {
+                translation: translationData,
+                earab: earabHtml,
+                isLocalData: false
+            };
+        }
+
+        // Load Content (with Local Data + Fallback)
         async function loadContent(surahNum, ayahNum) {
             // Update State
             currentSurah = surahNum;
@@ -251,21 +300,24 @@
             errorDiv.classList.add('hidden');
 
             try {
-                // 1. Fetch Translations (QuranAPI)
-                const translationUrl = `https://quranapi.pages.dev/api/${surahNum}/${ayahNum}.json`;
-                const translationRes = await fetch(translationUrl);
-                const translationData = await translationRes.json();
-
-                // 2. Fetch E'arab (SurahQuran.com via Proxy)
-                const earabUrl = `https://surahquran.com/quran-search/e3rab-aya-${ayahNum}-sora-${surahNum}.html`;
-                const earabHtml = await fetchWithProxy(earabUrl);
+                // Try to load from local data first
+                let data;
+                try {
+                    console.log(`Loading from local data: Surah ${surahNum}, Ayah ${ayahNum}`);
+                    data = await loadFromLocalData(surahNum, ayahNum);
+                    console.log('Successfully loaded from local data');
+                } catch (localError) {
+                    console.warn('Local data unavailable, falling back to remote APIs:', localError.message);
+                    data = await loadFromRemoteAPIs(surahNum, ayahNum);
+                }
 
                 // Save full analysis to cache
                 const analysisData = {
                     surah: surahNum,
                     ayah: ayahNum,
-                    translation: translationData,
-                    earab: earabHtml,
+                    translation: data.translation,
+                    earab: data.earab,
+                    isLocalData: data.isLocalData,
                     timestamp: new Date().getTime()
                 };
                 try {
@@ -275,7 +327,7 @@
                 }
 
                 // Update UI
-                displayContent(translationData, earabHtml, surahNum, ayahNum);
+                displayContent(data.translation, data.earab, surahNum, ayahNum, data.isLocalData);
 
                 // Update Navigation Buttons
                 updateNavButtons(surahNum, ayahNum);
@@ -326,49 +378,63 @@
         }
 
         // Display Content
-        function displayContent(translationData, earabHtml, surahNum, ayahNum) {
+        function displayContent(translationData, earabData, surahNum, ayahNum, isLocalData = false) {
             // Header Info
             const surah = surahs[surahNum - 1];
             document.getElementById('surahNameDisplay').textContent = `Surah ${surah.surahName}`;
             document.getElementById('ayahNumberDisplay').textContent = `Ayah ${ayahNum}`;
 
             // Translations
-            document.getElementById('arabicText').textContent = translationData.arabic1;
             document.getElementById('englishTranslation').textContent = translationData.english;
             document.getElementById('urduTranslation').textContent = translationData.urdu;
 
-            // E'arab Parsing
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(earabHtml, 'text/html');
-
-            // Extract specific content
-            const earabTitle = doc.querySelector('#e3rab'); // Usually "إعراب الآية"
-            const cards = doc.querySelectorAll('.card.mt-3');
-
-            // We usually want the first few cards which contain the analysis
+            // E'arab Content Display
             const contentDiv = document.getElementById('earabContent');
             contentDiv.innerHTML = '';
 
-            if (earabTitle) {
-                const title = document.createElement('h2');
-                title.textContent = earabTitle.textContent;
-                title.style.textAlign = 'center';
-                title.style.marginBottom = '20px';
-                title.style.color = 'var(--primary)';
-                contentDiv.appendChild(title);
+            // Check if we have structured data from local JSON
+            if (isLocalData && earabData.title_html && earabData.cards_html) {
+                // Use structured data from local JSON
+                if (earabData.title_html) {
+                    contentDiv.innerHTML += earabData.title_html;
+                }
+
+                earabData.cards_html.forEach(cardHtml => {
+                    contentDiv.innerHTML += cardHtml;
+                });
+
+                console.log('Displayed E\'arab from local structured data');
+            } else {
+                // Fallback: Parse raw HTML (from remote APIs)
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(earabData, 'text/html');
+
+                // Extract specific content
+                const earabTitle = doc.querySelector('#e3rab');
+                const cards = doc.querySelectorAll('.card.mt-3');
+
+                if (earabTitle) {
+                    const title = document.createElement('h2');
+                    title.textContent = earabTitle.textContent;
+                    title.style.textAlign = 'center';
+                    title.style.marginBottom = '20px';
+                    title.style.color = 'var(--primary)';
+                    contentDiv.appendChild(title);
+                }
+
+                // Add first 2 cards (usually sufficient)
+                Array.from(cards).slice(0, 2).forEach(card => {
+                    card.classList.add('result-card');
+                    contentDiv.appendChild(card);
+                });
+
+                console.log('Displayed E\'arab from remote HTML parsing');
             }
-
-            // Add first 2 cards (usually sufficient)
-            Array.from(cards).slice(0, 2).forEach(card => {
-                // Keep original styles and classes
-                card.classList.add('result-card');
-
-                contentDiv.appendChild(card);
-            });
 
             // Source Link
             const sourceLink = document.getElementById('originalSourceLink');
-            sourceLink.href = `https://surahquran.com/quran-search/e3rab-aya-${ayahNum}-sora-${surahNum}.html`;
+            sourceLink.href = earabData.source_url ||
+                `https://surahquran.com/quran-search/e3rab-aya-${ayahNum}-sora-${surahNum}.html`;
 
             // Show Result
             resultDiv.classList.remove('hidden');

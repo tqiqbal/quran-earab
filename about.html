@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Quran E'arab & Sarf</title>
+    <title>About - Quran Grammar</title>
     <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap"
@@ -16,7 +16,7 @@
     <nav class="top-nav">
         <div class="nav-container">
             <div class="nav-logo">
-                <span>Quran E'arab</span>
+                <span>Quran Grammar</span>
             </div>
             <div class="nav-links">
                 <a href="index.html" class="nav-item">E'arab</a>
@@ -27,14 +27,16 @@
     </nav>
 
     <div class="app-container">
-        <div class="card">
-            <h1>About</h1>
-            <div class="subtitle">Quran E'arab & Sarf Learning Tool</div>
+        <section class="page-hero">
+            <h1>About Quran Grammar</h1>
+            <p class="page-description">Learn Arabic grammar through Quranic text analysis and morphology</p>
+        </section>
 
-            <div class="section"
-                style="margin-bottom: 30px; padding: 20px; background: var(--bg-input); border-radius: 8px; border-left: 4px solid var(--primary);">
-                <h2 style="color: var(--text-dark); margin-bottom: 10px; font-size: 1.2em;">Disclaimer</h2>
-                <p style="color: var(--text-muted); line-height: 1.6;">
+        <div class="card">
+
+            <div class="disclaimer-box">
+                <h2>Disclaimer</h2>
+                <p>
                     This is an educational web application designed to help students learn Arabic grammar through
                     Quranic text analysis.
                     All content is fetched from third-party sources and we do not claim ownership of any religious texts
@@ -42,39 +44,36 @@
                 </p>
             </div>
 
-            <div class="section" style="margin-bottom: 30px;">
-                <h2 style="color: var(--text-dark); margin-bottom: 15px; font-size: 1.4em;">Data Sources</h2>
-                <p style="color: var(--text-muted); margin-bottom: 15px;">This application fetches data from the
-                    following trusted sources:</p>
+            <div class="about-section">
+                <h2>Data Sources</h2>
+                <p>This application fetches data from the following trusted sources:</p>
 
-                <div class="sources-list" style="display: grid; gap: 15px;">
-                    <div class="source-item" style="background: var(--bg-input); padding: 15px; border-radius: 8px;">
-                        <h3 style="color: var(--primary); font-size: 1.1em; margin-bottom: 8px;">E'arab (Grammatical
-                            Analysis)</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 10px;">
+                <div class="sources-list">
+                    <div class="source-card">
+                        <h3>E'arab (Grammatical Analysis)</h3>
+                        <ul>
+                            <li>
                                 <strong>Surah Quran</strong> - <a href="https://surahquran.com" target="_blank"
-                                    rel="noopener" style="color: var(--primary);">surahquran.com</a>
-                                <br><span style="font-size: 0.9em; color: var(--text-light);">Provides detailed Arabic
+                                    rel="noopener">surahquran.com</a>
+                                <span class="source-description">Provides detailed Arabic
                                     grammatical analysis (E'arab) for Quranic verses</span>
                             </li>
                             <li>
                                 <strong>Quran API</strong> - <a href="https://quranapi.pages.dev" target="_blank"
-                                    rel="noopener" style="color: var(--primary);">quranapi.pages.dev</a>
-                                <br><span style="font-size: 0.9em; color: var(--text-light);">Supplies English and Urdu
+                                    rel="noopener">quranapi.pages.dev</a>
+                                <span class="source-description">Supplies English and Urdu
                                     translations of Quranic verses</span>
                             </li>
                         </ul>
                     </div>
 
-                    <div class="source-item" style="background: var(--bg-input); padding: 15px; border-radius: 8px;">
-                        <h3 style="color: var(--primary); font-size: 1.1em; margin-bottom: 8px;">Sarf (Morphology
-                            Analysis)</h3>
-                        <ul style="list-style: none; padding: 0;">
+                    <div class="source-card">
+                        <h3>Sarf (Morphology Analysis)</h3>
+                        <ul>
                             <li>
                                 <strong>AraTools</strong> - <a href="https://aratools.com" target="_blank"
-                                    rel="noopener" style="color: var(--primary);">aratools.com</a>
-                                <br><span style="font-size: 0.9em; color: var(--text-light);">Provides Arabic
+                                    rel="noopener">aratools.com</a>
+                                <span class="source-description">Provides Arabic
                                     morphological analysis including root, form, and grammatical details</span>
                             </li>
                         </ul>
@@ -82,22 +81,51 @@
                 </div>
             </div>
 
-            <div class="section" style="margin-bottom: 30px;">
-                <h2 style="color: var(--text-dark); margin-bottom: 15px; font-size: 1.4em;">Features</h2>
-                <div style="display: grid; gap: 10px; color: var(--text-muted);">
-                    <p><strong>📖 E'arab Analysis:</strong> Detailed grammatical breakdown of Quranic verses with
-                        English and Urdu translations</p>
-                    <p><strong>🔤 Sarf Analysis:</strong> Morphological analysis of Arabic words including root
-                        derivation and grammatical forms</p>
-                    <p><strong>📱 Mobile Responsive:</strong> Optimized for both desktop and mobile viewing</p>
-                    <p><strong>🌐 No Backend Required:</strong> Pure client-side application with zero data collection
-                    </p>
+            <div class="about-section">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <div class="feature-content">
+                            <div class="feature-title">E'arab Analysis</div>
+                            <div class="feature-description">Detailed grammatical breakdown of Quranic verses with English and Urdu translations</div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                        </svg>
+                        <div class="feature-content">
+                            <div class="feature-title">Sarf Analysis</div>
+                            <div class="feature-description">Morphological analysis of Arabic words including root derivation and grammatical forms</div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                        <div class="feature-content">
+                            <div class="feature-title">Mobile Responsive</div>
+                            <div class="feature-description">Optimized for both desktop and mobile viewing</div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        <div class="feature-content">
+                            <div class="feature-title">Privacy First</div>
+                            <div class="feature-description">Pure client-side application with zero data collection</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="section" style="margin-bottom: 30px;">
-                <h2 style="color: var(--text-dark); margin-bottom: 15px; font-size: 1.4em;">Privacy & Data</h2>
-                <p style="color: var(--text-muted); line-height: 1.6;">
+            <div class="about-section">
+                <h2>Privacy & Data</h2>
+                <p>
                     This application runs entirely in your browser and does not collect, store, or transmit any personal
                     data.
                     All requests are made directly to third-party APIs from your device. Please refer to the privacy
@@ -106,22 +134,22 @@
                 </p>
             </div>
 
-            <div class="section" style="margin-bottom: 30px;">
-                <h2 style="color: var(--text-dark); margin-bottom: 15px; font-size: 1.4em;">Contact & Suggestions</h2>
-                <p style="color: var(--text-muted); line-height: 1.6;">
+            <div class="about-section">
+                <h2>Contact & Suggestions</h2>
+                <p>
                     If you have any suggestions, feedback, or questions, please feel free to reach out:
                 </p>
-                <p style="margin-top: 10px;">
-                    <a href="mailto:tanveer.iqbal92@gmail.com"
-                        style="color: var(--primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
-                        <span>✉️</span> tanveer.iqbal92@gmail.com
-                    </a>
-                </p>
+                <a href="mailto:tanveer.iqbal92@gmail.com" class="contact-link">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    tanveer.iqbal92@gmail.com
+                </a>
             </div>
 
-            <div class="section">
-                <h2 style="color: var(--text-dark); margin-bottom: 15px; font-size: 1.4em;">Copyright & Attribution</h2>
-                <p style="color: var(--text-muted); line-height: 1.6;">
+            <div class="about-section">
+                <h2>Copyright & Attribution</h2>
+                <p>
                     All rights reserved to original sources. This application serves as an educational interface
                     and does not claim ownership of any content provided by the third-party sources mentioned above.
                 </p>
@@ -132,15 +160,21 @@
     <!-- Mobile Bottom Navigation -->
     <nav class="bottom-nav">
         <a href="index.html" class="bottom-nav-item">
-            <span class="bottom-nav-icon">📖</span>
+            <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
             <span>E'arab</span>
         </a>
         <a href="sarf.html" class="bottom-nav-item">
-            <span class="bottom-nav-icon">🔤</span>
+            <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            </svg>
             <span>Sarf</span>
         </a>
         <a href="about.html" class="bottom-nav-item active">
-            <span class="bottom-nav-icon">ℹ️</span>
+            <svg class="bottom-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
             <span>About</span>
         </a>
     </nav>

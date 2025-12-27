@@ -97,6 +97,78 @@ For the most authentic and reliable content, users are encouraged to visit the s
 - **Error Handling**: Graceful error messages in Arabic and English
 - **Cross-page Navigation**: Easy navigation between E'arab and Sarf tools
 
+## Performance Enhancement: Python Scraper
+
+### Overview
+
+To eliminate dependency on unreliable CORS proxy servers and improve performance, this project includes a Python scraper that pre-fetches all E'arab (grammatical analysis) and translation data.
+
+### Benefits
+
+- ⚡ **Fast Loading**: Load times reduced from 5-10 seconds to <1 second
+- 🚀 **No CORS Issues**: Eliminates dependency on third-party proxy servers
+- 📴 **Offline Capability**: Complete offline functionality with pre-scraped data
+- 🔄 **Backward Compatible**: Automatically falls back to CORS proxies if local data unavailable
+
+### Data Architecture
+
+**Pre-Scraped Data:**
+- 114 JSON files (one per surah) in `/data` folder
+- Contains E'arab HTML and translations for all ~6,236 ayahs
+- Total size: ~50-100MB
+- Committed to repository for instant availability
+
+**Loading Strategy:**
+1. **Primary**: Load from local JSON files (`data/surah-{N}.json`)
+2. **Fallback**: Use CORS proxies if local data unavailable
+
+### Using the Scraper
+
+#### Quick Start
+
+```bash
+cd scraper
+
+# Create virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Scrape all surahs (takes 2-4 hours)
+python scraper.py
+```
+
+#### Commands
+
+```bash
+# Scrape all 114 surahs
+python scraper.py
+
+# Test with single surah
+python scraper.py --surah 1
+
+# Scrape range of surahs
+python scraper.py --start 1 --end 10
+```
+
+#### Output
+
+- **Data files**: `data/surah-{1-114}.json`
+- **Manifest**: `data/manifest.json` (index of all files)
+- **Errors**: `data/scraping_errors.json` (if any errors occur)
+
+### Scraper Features
+
+- ✅ Respectful rate limiting (1 second between requests)
+- ✅ Automatic retry with exponential backoff
+- ✅ Progress bars and logging
+- ✅ Error tracking and recovery
+- ✅ Resume capability
+
+See [scraper/README.md](scraper/README.md) for detailed documentation.
+
 ## APIs Used
 
 ### 1. Surah List API
